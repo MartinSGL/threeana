@@ -26,6 +26,7 @@ header {
   background-color: white;
   margin: 0 auto;
   padding: 10px;
+  z-index: 999;
 }
 
 .logo {
@@ -35,6 +36,7 @@ header {
 }
 
 .title-name {
+  color: rgba(78, 117, 70);
   font-size: 20px;
   font-style: italic;
   font-family: Arial, Helvetica, sans-serif;
@@ -47,6 +49,10 @@ header {
 
 .menu-item span {
   margin-left: 5px;
+}
+
+.menu-item:hover {
+  color: rgba(78, 117, 70);
 }
 
 .button-dark-light {
@@ -64,7 +70,8 @@ section {
   width: 100%;
   height: calc(100vh - 90px);
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
+  /* background-color: #507239; */
 }
 
 a {
@@ -74,4 +81,130 @@ a {
 
 .container.dark {
   background-color: black;
+}
+
+#home {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#home .home-explanation {
+  flex: 1;
+}
+
+#home .mision_vision {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+#home p {
+  margin-top: 10px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.home-explanation {
+  border-radius: 10px;
+  background-image: url("https://nehashadenet.com/wp-content/uploads/2019/11/Mulch.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: white;
+  height: 300px;
+  position: relative;
+}
+
+.home-explanation div {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding: 20px;
+  background-color: rgba(78, 117, 70, 0.6);
+  border-radius: 5px;
+}
+
+#producto {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.card-container {
+  background-color: white;
+  border-radius: 10px;
+  border: black solid 1px;
+  height: 600px;
+  margin-top: 90px;
+}
+
+.image-container {
+  height: 200px;
+  background-color: rgba(78, 117, 70);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+.description-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.slick-slide > div {
+  margin: 0 10px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  background-color: rgba(78, 117, 70);
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px rgba(78, 117, 70);
+}
+
+.description-container button {
+  background-color: rgba(78, 117, 70);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.slick-dots li button {
+  background-color: #ff0000; /* Change the background color of the dots */
+}
+
+.slick-dots li button:before {
+  color: #ffffff; /* Change the color of the dot */
+}
+
+@media (max-width: 767px) {
+  .tab-title {
+    display: none;
+  }
+
+  #home .mision_vision {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+    align-items: center;
+  }
 }
