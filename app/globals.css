@@ -2,6 +2,7 @@
   --primary-color: rgba(78, 117, 70);
   --primary-color-transparent: rgba(78, 117, 70, 0.5);
   --button-text-color: #fff;
+  --primary-color-transparent-black: #a6b9a2;
 }
 
 * {
@@ -15,10 +16,28 @@ html {
   scroll-padding-top: 92px;
 }
 
+.header-back {
+  width: 100%;
+  min-height: 92px;
+  position: fixed;
+  /* border-bottom: solid 2px var(--primary-color); */
+  box-shadow: 0px 2px 5px black;
+  background-color: white;
+  z-index: 5;
+}
+
+.header-back.dark {
+  background-color: black;
+  box-shadow: 0px 2px 5px var(--primary-color-transparent-black);
+}
+
+body {
+  background-color: var(--primary-color-transparent);
+}
+
 main {
   max-width: 1200px;
   margin: 0 auto;
-  background-color: white;
 }
 
 main.dark {
@@ -38,6 +57,7 @@ header {
   margin: 0 auto;
   padding: 10px;
   z-index: 999;
+  /* border-bottom: solid 2px var(--primary-color); */
 }
 
 header.dark {
@@ -55,7 +75,6 @@ header.dark {
 }
 
 .title-name {
-  color: rgba(78, 117, 70);
   font-size: 20px;
   font-style: italic;
   font-family: Arial, Helvetica, sans-serif;
@@ -75,11 +94,11 @@ header.dark {
 }
 
 .button-dark-light {
-  color: inherit;
   border-radius: 100%;
   background-color: transparent;
   border: none;
   font-size: 20px;
+  color: inherit;
 }
 
 .button-dark-light:hover {
@@ -90,9 +109,10 @@ header.dark {
 section {
   width: 100%;
   min-height: calc(100vh - 90px);
-  padding: 10px;
-  border-radius: 10px;
-  /* background-color: #507239; */
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 a {
@@ -108,11 +128,25 @@ a {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  background-color: white;
+}
+
+#home.dark {
+  background-color: var(--primary-color-transparent-black);
+  color: black;
 }
 
 #home .home-explanation {
   flex: 1;
   min-height: 300px;
+  border-radius: 10px;
+  background-image: url("https://nehashadenet.com/wp-content/uploads/2019/11/Mulch.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: white;
+  position: relative;
 }
 
 #home .mision_vision {
@@ -131,18 +165,6 @@ a {
   font-style: italic;
 }
 
-.home-explanation {
-  border-radius: 10px;
-  background-image: url("https://nehashadenet.com/wp-content/uploads/2019/11/Mulch.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  color: white;
-  min-height: 300px;
-  position: relative;
-}
-
 .home-explanation div {
   width: 100%;
   position: absolute;
@@ -154,17 +176,27 @@ a {
 }
 
 #producto {
-  width: 90%;
-  margin: 0 auto;
+  position: relative;
+  background-color: white;
+}
+
+#producto.dark {
+  background-color: var(--primary-color-transparent-black);
+}
+
+#producto h3 {
+  position: absolute;
+  top: 60px;
+  color: var(--primary-color);
 }
 
 .card-container {
   background-color: white;
   border-radius: 10px;
-  min-height: 600px;
+  height: 600px;
   margin-top: 90px;
   border: 2px solid var(--primary-color);
-  overflow: hidden;
+  border-radius: 10px;
 }
 
 .image-container {
@@ -177,8 +209,8 @@ a {
 
 .image-container img {
   border-radius: 50%;
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
 }
 
 .description-container {
@@ -223,8 +255,12 @@ a {
   color: #ffffff; /* Change the color of the dot */
 }
 
-#contacto hr {
-  margin-top: 5px;
+#contacto {
+  /* background-color: var(--primary-color-transparent); */
+}
+
+#contacto h3 {
+  color: var(--primary-color);
 }
 
 .container-contacto {
@@ -273,10 +309,11 @@ a {
 .numbers button {
   width: 200px;
   border: none;
-  background-color: var(--primary-color-transparent);
+  background-color: var(--primary-color);
   font-size: 15px;
   padding: 5px;
   border-radius: 10px;
+  color: white;
 }
 
 .numbers button:hover {

@@ -88,6 +88,7 @@ export default function Home() {
 
   return (
     <div className={`container ${isDark && "dark"}`}>
+      <div className={`header-back ${isDark && "dark"}`}></div>
       <main className={`${isDark && "dark"}`}>
         <header className={`${isDark && "dark"}`}>
           <div className="logo">
@@ -124,7 +125,7 @@ export default function Home() {
           </div>
         </header>
         <div>
-          <section id="home">
+          <section id="home" className={`${isDark && "dark"}`}>
             <div className="home-explanation">
               <div>
                 <h3>Bienvenidos a Threana</h3>
@@ -168,7 +169,7 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section id="producto">
+          <section id="producto" className={`${isDark && "dark"}`}>
             <h3>Nuestros productos</h3>
             <Slider {...settings}>
               {products.length > 0 &&
@@ -183,8 +184,7 @@ export default function Home() {
             </Slider>
           </section>
           <section id="contacto">
-            <h3>Te gustaria obtener mas informacion</h3>
-            <hr />
+            <h3>¿Te gustaria obtener mas información?</h3>
             <div className="container-contacto">
               <div className="formas-contacto">
                 <div className="form-contacto">
