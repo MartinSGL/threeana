@@ -3,20 +3,8 @@ import { CardItem } from "@/components/CardItem";
 import DarkLight from "@/components/DarkLight";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import {
-  FaCalendarAlt,
-  FaHome,
-  FaImages,
-  FaMailBulk,
-  FaWhatsapp,
-} from "react-icons/fa";
-import { FcBusinessContact } from "react-icons/fc";
-import { GiArcheryTarget } from "react-icons/gi";
-import {
-  MdDarkMode,
-  MdLightMode,
-  MdOutlineProductionQuantityLimits,
-} from "react-icons/md";
+import { FaHome, FaMailBulk, FaWhatsapp } from "react-icons/fa";
+import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -69,7 +57,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const mediaQuery = window && window.matchMedia("(max-width: 767px)");
     const handleMediaQueryChange = (e: any) => {
       setIsMobile(e.matches);
     };
