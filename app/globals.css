@@ -30,7 +30,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 92px;
+  min-height: 92px;
   width: 100%;
   position: sticky;
   top: 0px;
@@ -89,7 +89,7 @@ header.dark {
 
 section {
   width: 100%;
-  height: calc(100vh - 90px);
+  min-height: calc(100vh - 90px);
   padding: 10px;
   border-radius: 10px;
   /* background-color: #507239; */
@@ -139,7 +139,7 @@ a {
   background-attachment: fixed;
   background-repeat: no-repeat;
   color: white;
-  height: 300px;
+  min-height: 300px;
   position: relative;
 }
 
@@ -161,14 +161,14 @@ a {
 .card-container {
   background-color: white;
   border-radius: 10px;
-  height: 600px;
+  min-height: 600px;
   margin-top: 90px;
   border: 2px solid var(--primary-color);
   overflow: hidden;
 }
 
 .image-container {
-  height: 200px;
+  min-height: 200px;
   background-color: var(--primary-color);
   display: flex;
   justify-content: center;
@@ -291,6 +291,7 @@ a {
 iframe {
   border: none;
   border-radius: 10px;
+  width: 100%;
 }
 
 h2,
