@@ -2,8 +2,14 @@
 import { CardItem } from "@/components/CardItem";
 import DarkLight from "@/components/DarkLight";
 import Image from "next/image";
-import { useState } from "react";
-import { FaCalendarAlt, FaHome, FaImages, FaMailBulk } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import {
+  FaCalendarAlt,
+  FaHome,
+  FaImages,
+  FaMailBulk,
+  FaWhatsapp,
+} from "react-icons/fa";
 import { FcBusinessContact } from "react-icons/fc";
 import { GiArcheryTarget } from "react-icons/gi";
 import {
@@ -48,21 +54,50 @@ const products = [
 
 export default function Home() {
   const [isDark, setIsDark] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    window.matchMedia("(max-width: 767px)").matches
+  );
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 1000,
-    slidesToShow: 3,
+    slidesToShow: isMobile ? 1 : 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
   };
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const handleMediaQueryChange = (e: any) => {
+      setIsMobile(e.matches);
+    };
+    mediaQuery.addListener(handleMediaQueryChange);
+    return () => {
+      mediaQuery.removeListener(handleMediaQueryChange);
+    };
+  }, []);
+
+  const handleWhatsAppClick = (phoneNumber: string) => {
+    // Construct the WhatsApp URL
+    const whatsappUrl = `https://wa.me/${phoneNumber}`;
+    // Open the WhatsApp URL in a new window or tab
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <div className={`container ${isDark && "dark"}`}>
-      <main className="dark">
-        <header>
+      <main className={`${isDark && "dark"}`}>
+        <header className={`${isDark && "dark"}`}>
           <div className="logo">
-            <Image src="/logo.jpeg" width={50} height={50} alt="logo" />
+            <Image
+              className={`main-image ${isDark && "dark"}`}
+              src="/logo.jpeg"
+              width={50}
+              height={50}
+              alt="logo"
+            />
             <span className="title-name">Threana</span>
           </div>
           <div className="nav">
@@ -92,7 +127,7 @@ export default function Home() {
           <section id="home">
             <div className="home-explanation">
               <div>
-                <h2>Bienvenidos a Threana</h2>
+                <h3>Bienvenidos a Threana</h3>
                 <p>
                   En Threana, nos enorgullecemos de ofrecer la más alta calidad
                   en productos derivados del papayo. Somos una empresa dedicada
@@ -134,6 +169,7 @@ export default function Home() {
             </div>
           </section>
           <section id="producto">
+            <h3>Nuestros productos</h3>
             <Slider {...settings}>
               {products.length > 0 &&
                 products.map((product) => (
@@ -146,7 +182,48 @@ export default function Home() {
                 ))}
             </Slider>
           </section>
-          <section id="contacto">Contacto</section>
+          <section id="contacto">
+            <h3>Te gustaria obtener mas informacion</h3>
+            <hr />
+            <div className="container-contacto">
+              <div className="formas-contacto">
+                <div className="form-contacto">
+                  <form>
+                    <h4>Envianos tus dudas</h4>
+                    <label>Correo: </label>
+                    <input placeholder="Escriba su correo: juan@gmail.com" />
+                    <label>Nombre: </label>
+                    <input placeholder="Escriba su correo: Juan Padilla" />
+                    <label>Descripcion:</label>
+                    <textarea
+                      rows={4}
+                      placeholder="Escriba una descripcion"
+                    ></textarea>
+                  </form>
+                </div>
+                <div className="numbers">
+                  <h4>Mandanos un mensaje</h4>
+                  <div className="numbers-container">
+                    <button onClick={() => handleWhatsAppClick("3133298040")}>
+                      313 329 8040 <FaWhatsapp />
+                    </button>
+                    <button onClick={() => handleWhatsAppClick("3133298040")}>
+                      313 329 8040 <FaWhatsapp />
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="map">
+                <h4>Visitanos en nuestra oficina</h4>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.8665295277574!2d-103.96702898890311!3d18.93730105623747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x843ac97e5aa11967%3A0x791009d860f2b6c2!2sPrincipal%20de%20Armer%C3%ADa%20Garden!5e0!3m2!1sen!2smx!4v1712188958411!5m2!1sen!2smx"
+                  width="600"
+                  height="450"
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+          </section>
         </div>
         <footer></footer>
       </main>

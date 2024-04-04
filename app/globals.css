@@ -1,3 +1,9 @@
+:root {
+  --primary-color: rgba(78, 117, 70);
+  --primary-color-transparent: rgba(78, 117, 70, 0.5);
+  --button-text-color: #fff;
+}
+
 * {
   box-sizing: border-box;
   padding: 0px;
@@ -15,6 +21,11 @@ main {
   background-color: white;
 }
 
+main.dark {
+  background-color: black;
+  color: white;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -29,10 +40,18 @@ header {
   z-index: 999;
 }
 
+header.dark {
+  background-color: black;
+}
+
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.main-image.dark {
+  border-radius: 50%;
 }
 
 .title-name {
@@ -52,10 +71,11 @@ header {
 }
 
 .menu-item:hover {
-  color: rgba(78, 117, 70);
+  color: var(--primary-color);
 }
 
 .button-dark-light {
+  color: inherit;
   border-radius: 100%;
   background-color: transparent;
   border: none;
@@ -63,6 +83,7 @@ header {
 }
 
 .button-dark-light:hover {
+  color: var(--primary-color);
   cursor: pointer;
 }
 
@@ -91,6 +112,7 @@ a {
 
 #home .home-explanation {
   flex: 1;
+  min-height: 300px;
 }
 
 #home .mision_vision {
@@ -127,7 +149,7 @@ a {
   bottom: 0px;
   left: 0px;
   padding: 20px;
-  background-color: rgba(78, 117, 70, 0.6);
+  background-color: var(--primary-color-transparent);
   border-radius: 5px;
 }
 
@@ -139,14 +161,15 @@ a {
 .card-container {
   background-color: white;
   border-radius: 10px;
-  border: black solid 1px;
   height: 600px;
   margin-top: 90px;
+  border: 2px solid var(--primary-color);
+  overflow: hidden;
 }
 
 .image-container {
   height: 200px;
-  background-color: rgba(78, 117, 70);
+  background-color: var(--primary-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -165,6 +188,11 @@ a {
   align-items: center;
   gap: 20px;
   padding: 20px;
+  color: inherit;
+}
+
+.description-container p {
+  color: black;
 }
 
 .slick-slide > div {
@@ -173,13 +201,13 @@ a {
 
 .slick-prev:before,
 .slick-next:before {
-  background-color: rgba(78, 117, 70);
+  background-color: var(--primary-color);
   border-radius: 50%;
-  box-shadow: 1px 1px 1px rgba(78, 117, 70);
+  box-shadow: 1px 1px 1px var(--primary-color);
 }
 
 .description-container button {
-  background-color: rgba(78, 117, 70);
+  background-color: var(--primary-color);
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -195,6 +223,87 @@ a {
   color: #ffffff; /* Change the color of the dot */
 }
 
+#contacto hr {
+  margin-top: 5px;
+}
+
+.container-contacto {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding-top: 30px;
+}
+
+.form-contacto form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-contacto form label {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.form-contacto form input {
+  padding: 10px;
+  border-radius: 5px;
+  border: var(--primary-color-transparent) solid 1px;
+}
+
+.form-contacto form textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: var(--primary-color-transparent) solid 1px;
+}
+
+.numbers {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.numbers-container {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.numbers button {
+  width: 200px;
+  border: none;
+  background-color: var(--primary-color-transparent);
+  font-size: 15px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.numbers button:hover {
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.map h4 {
+  margin-bottom: 10px;
+}
+
+iframe {
+  border: none;
+  border-radius: 10px;
+}
+
+h2,
+h4 {
+  color: var(--primary-color);
+}
+
+@media (max-width: 900px) {
+  .numbers-container {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 767px) {
   .tab-title {
     display: none;
@@ -206,5 +315,12 @@ a {
     gap: 20px;
     padding: 20px;
     align-items: center;
+  }
+
+  .container-contacto {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 30px;
   }
 }
