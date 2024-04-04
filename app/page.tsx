@@ -43,7 +43,8 @@ const products = [
 export default function Home() {
   const [isDark, setIsDark] = useState(false);
   const [isMobile, setIsMobile] = useState(
-    window && window.matchMedia("(max-width: 767px)").matches
+    typeof window !== "undefined" &&
+      window.matchMedia("(max-width: 767px)").matches
   );
 
   const settings = {
@@ -57,21 +58,23 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const mediaQuery = window && window.matchMedia("(max-width: 767px)");
-    const handleMediaQueryChange = (e: any) => {
-      setIsMobile(e.matches);
-    };
-    mediaQuery.addListener(handleMediaQueryChange);
-    return () => {
-      mediaQuery.removeListener(handleMediaQueryChange);
-    };
+    if (typeof window !== "undefined") {
+      const mediaQuery = window.matchMedia("(max-width: 767px)");
+      const handleMediaQueryChange = (e: any) => {
+        setIsMobile(e.matches);
+      };
+      mediaQuery.addListener(handleMediaQueryChange);
+      return () => {
+        mediaQuery.removeListener(handleMediaQueryChange);
+      };
+    }
   }, []);
 
   const handleWhatsAppClick = (phoneNumber: string) => {
     // Construct the WhatsApp URL
     const isMobile =
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        window && window.navigator.userAgent
+        typeof window !== "undefined" ? window.navigator.userAgent : ""
       );
     let whatsappUrl;
     if (isMobile) {
@@ -80,7 +83,7 @@ export default function Home() {
       whatsappUrl = `https://web.whatsapp.com/send?phone=${phoneNumber}`;
     }
     // Open the WhatsApp URL in a new window or tab
-    window && window.open(whatsappUrl, "_blank");
+    typeof window !== "undefined" && window.open(whatsappUrl, "_blank");
   };
 
   return (
