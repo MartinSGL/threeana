@@ -55,7 +55,7 @@ const products = [
 export default function Home() {
   const [isDark, setIsDark] = useState(false);
   const [isMobile, setIsMobile] = useState(
-    window.matchMedia("(max-width: 767px)").matches
+    window && window.matchMedia("(max-width: 767px)").matches
   );
 
   const settings = {
@@ -81,7 +81,16 @@ export default function Home() {
 
   const handleWhatsAppClick = (phoneNumber: string) => {
     // Construct the WhatsApp URL
-    const whatsappUrl = `https://wa.me/${phoneNumber}`;
+    const isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        window && window.navigator.userAgent
+      );
+    let whatsappUrl;
+    if (isMobile) {
+      whatsappUrl = `whatsapp://send?phone=${phoneNumber}`;
+    } else {
+      whatsappUrl = `https://web.whatsapp.com/send?phone=${phoneNumber}`;
+    }
     // Open the WhatsApp URL in a new window or tab
     window.open(whatsappUrl, "_blank");
   };
@@ -204,11 +213,11 @@ export default function Home() {
                 <div className="numbers">
                   <h4>Mandanos un mensaje</h4>
                   <div className="numbers-container">
-                    <button onClick={() => handleWhatsAppClick("3133298040")}>
-                      313 329 8040 <FaWhatsapp />
+                    <button onClick={() => handleWhatsAppClick("3316309019")}>
+                      33 1630 9019 <FaWhatsapp />
                     </button>
-                    <button onClick={() => handleWhatsAppClick("3133298040")}>
-                      313 329 8040 <FaWhatsapp />
+                    <button onClick={() => handleWhatsAppClick("3316309019")}>
+                      33 1630 9019 <FaWhatsapp />
                     </button>
                   </div>
                 </div>
