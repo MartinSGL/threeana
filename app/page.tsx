@@ -80,7 +80,7 @@ export default function Home() {
       whatsappUrl = `https://web.whatsapp.com/send?phone=${phoneNumber}`;
     }
     // Open the WhatsApp URL in a new window or tab
-    window.open(whatsappUrl, "_blank");
+    window && window.open(whatsappUrl, "_blank");
   };
 
   return (
